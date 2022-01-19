@@ -1,0 +1,29 @@
+<div class="col-lg-12 mt-3">
+    <h1>{{page_title}}</h1>
+    <hr/>
+
+    <div class="card mx-5 mb-2" *ngFor="let topic of topics">
+        <div class="card-body">
+          <h5 class="card-title">
+             <a class="text-decoration-none" [routerLink]="['/topic',topic._id]"> {{topic.title}}</a>
+             <span class="badge bg-secondary mx-1">{{topic.user.name + ' ' + topic.user.surname}}</span>
+            </h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{topic.date | amTimeAgo}}</h6>
+          <p class="card-text">{{topic.content}}</p>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <!--Navigation-->
+    <ul class="pagination mt-4">
+        <li class="page-item">
+            <a class="page-link" [routerLink]="['/topics',prev_page]">Previous</a>
+        </li>
+        <li class="page-item" *ngFor="let page of number_pages">
+            <a class="page-link" [routerLink]="['/topics',page]">{{page}}</a>
+        </li>
+        <li class="page-item"><a class="page-link" [routerLink]="['/topics',next_page]">Next</a></li>
+    </ul>
+    
+</div>
